@@ -51,3 +51,13 @@ get '/:id/questions/new' do
   @survey = Survey.find(params.fetch('id').to_i)
   erb(:question)
 end
+
+post '/:id/question' do
+  @survey = Survey.find(params.fetch('id').to_i)
+  title = params.fetch('question_title')
+  desc = params.fetch('question_desc')
+  question_type = params.fetch('question_type')
+  new_question = Question.create({:title => title, :description => desc, :question_type => question_type, :survey_id => @survey.id()})
+  @questions = Question.all
+  erb(:survey)
+end

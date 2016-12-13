@@ -1,13 +1,13 @@
 <h1>Add your questions to <%= @survey.title %></h1>
 <br>
-<form  action="/survey/<%= @survey.id %>" method="post">
+<form  action="/<%= @survey.id() %>/question" method="post">
 <div class="form-group">
   <label for="question_title">Title</label>
   <input class="form-control" type="text" name="question_title" placeholder="Question title">
 </div>
 <div class="form-group">
   <label for="question_desc">Question description</label>
-  <input class="form-control" type="text" name="question_desc" placeholder="Question desc">
+  <input class="form-control" type="text" name="question_desc" placeholder="Question description">
 </div>
 <div class="form-group">
   <label for="question_type">Question type</question label>
@@ -18,5 +18,5 @@
       <option value="select_all"> Select 1 or all answer options</option>
    </select>
  </div>
- <button  class="btn" type="submit" name="question_form_submit">Next</button>
+<button  class="btn" type="submit" name="question_form_submit">Next</button>
 </form>
