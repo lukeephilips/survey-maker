@@ -1,8 +1,19 @@
 <% if @surveys %>
   <% @surveys.each do |survey| %>
-    <h2><a href="<%= survey.id %>"><%= survey.title %></a></h2>
-    <h4>Created on: <%= survey.created_at.to_date %></h4>
+  <div class="row">
+    <div class="col-md-3">
+      <h3><a href="<%= survey.id %>"><%= survey.title %></a></h3>
+      <h4>Created on: <%= survey.created_at.to_date %></h4>
+    </div>
+    <div class="col-md-2">
+      <form  action="/survey/<%= survey.id %>/delete" method="post">
+        <input type="hidden" name="_method" value="delete">
+            <h3> <button type="submit" name="button" class="btn btn-danger btn-xs">Delete the survey</button> </h3>
 
+      </form>
+
+    </div>
+  </div>
   <% end %>
 <% end %>
 

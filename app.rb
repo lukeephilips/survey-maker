@@ -14,8 +14,19 @@ get '/' do
 end
 
 post '/surveys/new' do
-  binding.pry
-  Survey.create({:title => params.fetch('survey_title')})
+  @new_item = Survey.create({:title => params.fetch('survey_title')})
+  if @new_item.save()
+    @surveys = Survey.all
+    erb(:index)
+  else
+    erb(:error)
+  end
+end
+
+delete '/survey/:id/delete' do
+  id_to_delete = params.fetch("id").to_i
+  to_delete = Survey.find(id_to_delete)
+  to_delete.destroy
   @surveys = Survey.all
   erb(:index)
 end
