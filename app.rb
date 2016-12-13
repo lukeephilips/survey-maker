@@ -30,3 +30,8 @@ delete '/survey/:id/delete' do
   @surveys = Survey.all
   erb(:index)
 end
+
+get ('/survey/:id') do
+  @survey = Survey.find(params['id'])
+  erb(:survey)
+end

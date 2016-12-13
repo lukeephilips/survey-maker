@@ -1,7 +1,11 @@
 class Survey < ActiveRecord::Base
   has_many(:questions)
-  validates(:title, {:presence => true})
   before_save(:to_titlecase)
+  validates(:title, {:presence => true})
+  validates :title, {:uniqueness => true}
+  validates :title, uniqueness: { case_sensitive: false }
+
+
 
 
 

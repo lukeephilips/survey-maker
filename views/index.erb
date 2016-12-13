@@ -2,7 +2,7 @@
   <% @surveys.each do |survey| %>
   <div class="row">
     <div class="col-md-3">
-      <h3><a href="<%= survey.id %>"><%= survey.title %></a></h3>
+      <h3><a href="/survey/<%= survey.id %>"><%= survey.title %></a></h3>
       <h4>Created on: <%= survey.created_at.to_date %></h4>
     </div>
     <div class="col-md-2">
@@ -22,5 +22,5 @@
   <div class="form-group">
     <input type="text" name="survey_title" placeholder="Give it a title..." class="form-control">
   </div>
-  <button class="btn btn-danger" type="submit">Submit</button>
+  <button class="btn btn-success" type="submit">Submit</button>
 </form>
