@@ -35,3 +35,14 @@ get ('/survey/:id') do
   @survey = Survey.find(params['id'])
   erb(:survey)
 end
+
+patch ('/survey/:id') do
+  @new_item = Survey.find(params['id'])
+  @new_item.update({:title => params['survey_title']})
+  if @new_item.save()
+    @surveys = Survey.all
+    erb(:index)
+  else
+    erb(:error)
+  end
+end

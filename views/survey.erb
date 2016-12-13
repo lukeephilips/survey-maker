@@ -1,7 +1,8 @@
 <h1><%= @survey.title %></h1>
 <h4>Created on: <%= @survey.created_at.to_date %></h4>
 <h4>Last Updated on: <%= @survey.updated_at.to_datetime %></h4>
-<form action="/survey/<%=@survey.id%>/edit" method="post">
+<form action="/survey/<%=@survey.id%>" method="post">
+  <input type="hidden" name="_method" value="patch">
   <div class="form-group">
     <label for="survey_title">Update the title</label>
     <input type="text" name="survey_title" class="form-control">
