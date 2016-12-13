@@ -1,0 +1,15 @@
+<% if @surveys %>
+  <% @surveys.each do |survey| %>
+    <h2><a href="<%= survey.id %>"><%= survey.title %></a></h2>
+    <h4>Created on: <%= survey.created_at.to_date %></h4>
+
+  <% end %>
+<% end %>
+
+<form action="/surveys/new" method="post">
+  <h2>Create a new Survey</h2>
+  <div class="form-group">
+    <input type="text" name="survey_title" placeholder="Give it a title..." class="form-control">
+  </div>
+  <button class="btn btn-danger" type="submit">Submit</button>
+</form>
