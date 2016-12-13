@@ -1,15 +1,8 @@
 <h1><%= @survey.title %></h1>
 <h4>Created on: <%= @survey.created_at.strftime("%B %e, %Y") %></h4>
 <h4>Last Updated: <%= @survey.updated_at.localtime("-08:00").strftime("%I:%M %p") %></h4>
-<form action="/survey/<%=@survey.id%>" method="post">
-  <input type="hidden" name="_method" value="patch">
-  <div class="form-group">
-    <label for="survey_title">Update the title</label>
-    <input type="text" name="survey_title" class="form-control">
-  </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-  <a href="/<%=@survey.id%>/questions/new"><button class="btn">Add questions to the survey</button></a>
+
+<a href="/<%=@survey.id%>/questions/new"><button class="btn">Edit the survey</button></a>
 <br>
 <br>
   <div class="well">
@@ -22,8 +15,8 @@
           </p> Type of Question: <%= question.question_type %></p>
           <label for="user_content">Enter your question</label>
           <input type="text" name="user_content" class="form-control">
-          <button type="submit" name="button">add content</button>
         <% end %>
+        <button type="submit" name="button" class="btn">Take the survey</button>
       </form>
     <% end %>
   </div>

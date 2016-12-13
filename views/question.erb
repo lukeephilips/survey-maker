@@ -1,6 +1,15 @@
-<h1>Add your questions to <%= @survey.title %></h1>
-<br>
+<h1>Edit <%= @survey.title %></h1>
+<form action="/survey/<%=@survey.id%>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <div class="form-group">
+    <label for="survey_title">Update the title</label>
+    <input type="text" name="survey_title" class="form-control">
+  </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <br>
 <form  action="/<%= @survey.id() %>/question" method="post">
+  <h3>Add a question</h3>
 <div class="form-group">
   <label for="question_title">Title</label>
   <input class="form-control" type="text" name="question_title" placeholder="Question title">
@@ -20,3 +29,18 @@
  </div>
 <button  class="btn" type="submit" name="question_form_submit">Next</button>
 </form>
+
+<% if @survey.questions %>
+  <% @survey.questions.each do |question| %>
+    <div class="form-group">
+      <form action="/<%= @survey.id() %>/question/delete" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="hidden" name="question_id" value="<%= question.id %>">
+        <span><b>Title: <%= question.title %></a></span></b><br>
+        <span>Description: <%= question.description%></span><br>
+      </span> Type of Question: <%= question.question_type %></span><br>
+        <button type="submit" class="btn btn-danger btn-xs">Delete question</button>
+      </form>
+    </div>
+  <% end %>
+<% end %>

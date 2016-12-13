@@ -59,5 +59,14 @@ post '/:id/question' do
   question_type = params.fetch('question_type')
   new_question = Question.create({:title => title, :description => desc, :question_type => question_type, :survey_id => @survey.id()})
   @questions = Question.all
-  erb(:survey)
+  erb(:question)
+end
+
+delete '/:id/question/delete' do
+  @survey = Survey.find(params.fetch('id').to_i)
+  question = Question.find(params.fetch('question_id').to_i)
+  question.destroy()
+
+  @questions = Question.all
+  erb(:question)
 end
