@@ -1,6 +1,6 @@
 <h1><%= @survey.title %></h1>
-<h4>Created on: <%= @survey.created_at.to_date %></h4>
-<h4>Last Updated on: <%= @survey.updated_at.to_datetime %></h4>
+<h4>Created on: <%= @survey.created_at.strftime("%B %e, %Y") %></h4>
+<h4>Last Updated: <%= @survey.updated_at.localtime("-08:00").strftime("%I:%M %p") %></h4>
 <form action="/survey/<%=@survey.id%>" method="post">
   <input type="hidden" name="_method" value="patch">
   <div class="form-group">
