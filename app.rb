@@ -46,3 +46,8 @@ patch ('/survey/:id') do
     erb(:error)
   end
 end
+
+get '/:id/questions/new' do
+  @survey = Survey.find(params.fetch('id').to_i)
+  erb(:question)
+end
