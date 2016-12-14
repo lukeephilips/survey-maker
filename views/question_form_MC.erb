@@ -1,0 +1,28 @@
+<h2>Create a multiple choice question with up to four answers!</h2>
+
+<form action="/<%= @survey.id() %>/question/multi_add" method="post">
+    <input type="hidden" name="question_id" value="<%= @question.id %>">
+  <div class="radio">
+    <% if @question.choice %>
+      <label for="radio"><input type="radio" value = '<%= @question.choice %>'><%= @question.choice %></label>
+    <% else %>
+    <input type="text" name="choice" placeholder="Add choice">
+    <% end %>
+    <% if @question.choice2 %>
+      <label for="radio"><input type="radio" value = '<%= @question.choice2 %>'><%= @question.choice2 %></label>
+    <% else %>
+    <input type="text" name="choice2" placeholder="Add choice">
+    <% end %>
+    <% if @question.choice3 %>
+      <label for="radio"><input type="radio" value = '<%= @question.choice3 %>'><%= @question.choice3 %></label>
+    <% else %>
+    <input type="text" name="choice3" placeholder="Add choice">
+    <% end %>
+    <% if @question.choice4 %>
+      <label for="radio"><input type="radio" value = '<%= @question.choice4 %>'><%= @question.choice4 %></label>
+    <% else %>
+    <input type="text" name="choice4" placeholder="Add choice">
+    <% end %>
+  </div>
+  <button type="submit" class="btn">add choices</button>
+</form>

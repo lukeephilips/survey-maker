@@ -7,16 +7,38 @@
 <br>
   <div class="well">
     <% if @survey.questions %>
-      <form class="" action="index.html" method="post">
+      <form action="/surveys/<%=@survey.id%>/submit" method="post">
         <% @survey.questions.each do |question| %>
-          <input type="hidden" name="question_id" id="<%= question.id() %>">
-          <h3>Title: <%= question.title %></h3>
-          <p>Description: <%= question.description%></p>
-          </p> Type of Question: <%= question.question_type %></p>
-          <label for="user_content">Enter your question</label>
-          <input type="text" name="user_content" class="form-control">
+          <%if question.question_type == "multiple_choice" %>
+            <% if question.choice != ''%>
+              <div class="radio">
+                <label for="radio"><input type="radio" value = '<%= question.choice %>'><%= question.choice %></label>
+              </div>
+            <% end %>
+            <% if question.choice2 != ''%>
+            <div class="radio">
+              <label for="radio"><input type="radio" value = '<%= question.choice2 %>'><%= question.choice2 %></label>
+            </div>
+            <% end %>
+            <% if question.choice3 != ''%>
+            <div class="radio">
+              <label for="radio"><input type="radio" value = '<%= question.choice3 %>'><%= question.choice3 %></label>
+            </div>
+            <% end %>
+            <% if question.choice4 != ''%>
+            <div class="radio">
+              <label for="radio"><input type="radio" value = '<%= question.choice4 %>'><%= question.choice4 %></label>
+            </div>
+            <% end %>
+          <% else %>
+            <div class="form-group">
+              <input type="hidden" name="question_id" id="<%= question.id() %>">
+              <label for="user_content"><%= question.title %>:</label>
+              <input type="text" name="user_content_<%= question.id %>" class="form-control" placeholder="<%=question.description%>">
+            </div>
+          <% end %>
         <% end %>
-        <button type="submit" name="button" class="btn">Take the survey</button>
+        <button type="submit" name="button" class="btn">Submit</button>
       </form>
     <% end %>
   </div>

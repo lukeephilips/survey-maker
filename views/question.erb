@@ -1,4 +1,5 @@
 <h1>Edit <%= @survey.title %></h1>
+<a href="/survey/<%=@survey.id%>"><button type="button" class="btn btn-primary btn-lg">Back to <%=@survey.title%></button></a>
 <form action="/survey/<%=@survey.id%>" method="post">
   <input type="hidden" name="_method" value="patch">
   <div class="form-group">

@@ -20,7 +20,7 @@ describe(Survey) do
       expect(@new_survey.title()).to(eq("Shopper Survey"))
     end
     it("ensures all surveys have unique names") do
-      failing_survey = Survey.new({:title => "SHOPPER Survey"})
+      failing_survey = Survey.new(:title => "SHOPPER Survey")
       expect(failing_survey.save()).to(eq(false))
     end
   end
